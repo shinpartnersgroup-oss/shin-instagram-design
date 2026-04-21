@@ -3,974 +3,656 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北山伸 Instagram設計書</title>
+<title>北山伸 Instagram 5ステップ設計書</title>
 <style>
   :root {
-    --bg: #0e0e12;
-    --surface: #16161d;
-    --surface2: #1e1e28;
-    --border: #2a2a38;
-    --accent: #6ee7b7;
-    --accent2: #a78bfa;
-    --accent3: #f9a8d4;
-    --accent4: #fbbf24;
-    --text: #e4e4eb;
-    --text-muted: #9191a8;
-    --text-dim: #6b6b82;
-    --danger: #f87171;
-    --radius: 16px;
-    --radius-sm: 10px;
+    --bg: #0a0a0f;
+    --surface: #131320;
+    --surface2: #1a1a2e;
+    --surface3: #22223a;
+    --border: #2a2a42;
+    --green: #6ee7b7;
+    --blue: #60a5fa;
+    --purple: #a78bfa;
+    --pink: #f9a8d4;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --orange: #fb923c;
+    --text: #eaeaf2;
+    --muted: #8e8ea8;
+    --dim: #5e5e78;
+    --r: 16px;
+    --rs: 10px;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── Hero ── */
-  .hero {
-    position: relative;
-    padding: 100px 40px 80px;
-    text-align: center;
-    overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, rgba(110,231,183,.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 100%, rgba(167,139,250,.06) 0%, transparent 50%);
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(110,231,183,.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-label {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(110,231,183,.25);
-    padding: 6px 20px;
-    border-radius: 100px;
-    margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p {
-    font-size: 17px;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased}
 
   /* ── Layout ── */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:90px 0}
+  section+section{border-top:1px solid var(--border)}
 
-  section {
-    padding: 80px 0;
-  }
+  /* ── Hero ── */
+  .hero{position:relative;padding:110px 40px 90px;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(110,231,183,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(167,139,250,.05) 0%,transparent 50%)}
+  .badge{display:inline-block;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--green);border:1px solid rgba(110,231,183,.25);padding:6px 22px;border-radius:100px;margin-bottom:32px}
+  .hero h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:var(--green)}
+  .hero .sub{font-size:16px;color:var(--muted);max-width:560px;margin:0 auto 36px}
 
-  section + section {
-    border-top: 1px solid var(--border);
-  }
+  /* ── Step Nav ── */
+  .step-nav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .step-nav a{display:flex;align-items:center;gap:6px;padding:8px 18px;border-radius:100px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--border);color:var(--muted);transition:all .2s}
+  .step-nav a:hover{border-color:rgba(110,231,183,.4);color:var(--text)}
+  .step-nav .sn{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--bg)}
+  .sn.c1{background:var(--green)}.sn.c2{background:var(--blue)}.sn.c3{background:var(--pink)}.sn.c4{background:var(--purple)}.sn.c5{background:var(--yellow)}
 
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-size: clamp(24px, 3.5vw, 36px);
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-  }
-
-  .section-desc {
-    font-size: 15px;
-    color: var(--text-muted);
-    max-width: 680px;
-    margin-bottom: 48px;
-  }
+  /* ── Section Header ── */
+  .sh{margin-bottom:52px}
+  .sh .step-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+  .sh .step-badge .num{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--bg)}
+  .sh h2{font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+  .sh p{font-size:15px;color:var(--muted);max-width:700px}
 
   /* ── Cards ── */
-  .card-grid {
-    display: grid;
-    gap: 20px;
-  }
-  .card-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
-  .card-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-  .card-grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    transition: border-color .2s;
-  }
-  .card:hover { border-color: rgba(110,231,183,.3); }
-
-  .card-icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  .card-icon.green  { background: rgba(110,231,183,.12); }
-  .card-icon.purple { background: rgba(167,139,250,.12); }
-  .card-icon.pink   { background: rgba(249,168,212,.12); }
-  .card-icon.yellow { background: rgba(251,191,36,.12); }
-  .card-icon.red    { background: rgba(248,113,113,.12); }
-
-  .card h3 {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .card p, .card li {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-  .card ul { list-style: none; padding: 0; }
-  .card ul li { padding: 4px 0; padding-left: 18px; position: relative; }
-  .card ul li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 13px;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
+  .g{display:grid;gap:20px}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .c{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px;transition:border-color .2s}
+  .c:hover{border-color:rgba(110,231,183,.25)}
+  .c h3{font-size:17px;font-weight:700;margin-bottom:10px}
+  .c h4{font-size:14px;font-weight:700;margin-bottom:8px}
+  .c p,.c li{font-size:14px;color:var(--muted);line-height:1.8}
+  .c ul{list-style:none;padding:0}
+  .c ul li{padding:5px 0 5px 20px;position:relative}
+  .c ul li::before{content:'';position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--green)}
 
   /* ── Meaning Block ── */
-  .meaning-block {
-    background: linear-gradient(135deg, rgba(110,231,183,.06), rgba(167,139,250,.06));
-    border: 1px solid rgba(110,231,183,.15);
-    border-radius: var(--radius);
-    padding: 48px;
-    text-align: center;
-    margin-bottom: 48px;
-  }
-  .meaning-block .keyword {
-    font-size: 14px;
-    color: var(--accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .meaning-block blockquote {
-    font-size: clamp(18px, 2.5vw, 24px);
-    font-weight: 600;
-    line-height: 1.6;
-    max-width: 720px;
-    margin: 0 auto 20px;
-  }
-  .meaning-block .sub {
-    font-size: 14px;
-    color: var(--text-muted);
-  }
+  .meaning{background:linear-gradient(135deg,rgba(110,231,183,.05),rgba(167,139,250,.05));border:1px solid rgba(110,231,183,.12);border-radius:var(--r);padding:48px;text-align:center;margin-bottom:48px}
+  .meaning .kw{font-size:12px;color:var(--green);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+  .meaning blockquote{font-size:clamp(17px,2.2vw,22px);font-weight:600;line-height:1.7;max-width:680px;margin:0 auto 16px}
+  .meaning .note{font-size:13px;color:var(--muted)}
 
   /* ── Frame Steps ── */
-  .frame-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2px;
-    background: var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 48px;
-  }
-  .frame-step {
-    background: var(--surface);
-    padding: 32px 28px;
-  }
-  .frame-step .num {
-    font-size: 32px;
-    font-weight: 800;
-    color: var(--accent);
-    opacity: .4;
-    margin-bottom: 8px;
-  }
-  .frame-step h4 {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--accent);
-  }
-  .frame-step p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
+  .fsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;background:var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:48px}
+  .fs{background:var(--surface);padding:28px 24px}
+  .fs .n{font-size:28px;font-weight:800;opacity:.35;margin-bottom:6px}
+  .fs h4{font-size:13px;font-weight:700;margin-bottom:8px}
+  .fs p{font-size:13px;color:var(--muted)}
 
   /* ── 4 Types ── */
-  .types-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-bottom: 48px;
-  }
-  .type-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 28px;
-    border-left: 4px solid;
-  }
-  .type-card.analysis { border-color: #60a5fa; }
-  .type-card.action   { border-color: #f87171; }
-  .type-card.bika     { border-color: var(--accent); }
-  .type-card.manage   { border-color: var(--accent4); }
+  .tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:48px}
+  .tc{background:var(--surface);border-radius:var(--r);padding:24px;border-left:4px solid}
+  .tc.an{border-color:var(--blue)}.tc.ac{border-color:var(--red)}.tc.bi{border-color:var(--green)}.tc.ma{border-color:var(--yellow)}
+  .tc .tl{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+  .tc.an .tl{color:var(--blue)}.tc.ac .tl{color:var(--red)}.tc.bi .tl{color:var(--green)}.tc.ma .tl{color:var(--yellow)}
+  .tc h4{font-size:16px;font-weight:700;margin-bottom:8px}
+  .tc p{font-size:13px;color:var(--muted)}
+  .tc .ch{display:inline-block;margin-top:10px;font-size:11px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.04);color:var(--dim)}
+  .tc.bi{background:linear-gradient(135deg,var(--surface),rgba(110,231,183,.04));border-width:4px;position:relative}
+  .tc.bi::after{content:'MAIN TARGET';position:absolute;top:10px;right:10px;font-size:8px;letter-spacing:2px;color:var(--bg);background:var(--green);padding:3px 10px;border-radius:100px;font-weight:700}
 
-  .type-card .type-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .type-card.analysis .type-label { color: #60a5fa; }
-  .type-card.action .type-label   { color: #f87171; }
-  .type-card.bika .type-label     { color: var(--accent); }
-  .type-card.manage .type-label   { color: var(--accent4); }
+  /* ── Structure: Funnel ── */
+  .funnel{max-width:700px;margin:0 auto 48px}
+  .fstep{display:flex;align-items:stretch;min-height:76px}
+  .fline{width:44px;display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .fdot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:5px;border:3px solid var(--bg)}
+  .fdot.gr{background:var(--green);box-shadow:0 0 0 2px var(--green)}
+  .fdot.bl{background:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+  .fdot.pu{background:var(--purple);box-shadow:0 0 0 2px var(--purple)}
+  .fdot.ye{background:var(--yellow);box-shadow:0 0 0 2px var(--yellow)}
+  .fdot.pk{background:var(--pink);box-shadow:0 0 0 2px var(--pink)}
+  .fconn{width:2px;flex:1;background:var(--border)}
+  .fcont{padding:0 0 28px 14px;flex:1}
+  .fcont h4{font-size:14px;font-weight:700;margin-bottom:3px}
+  .fcont p{font-size:13px;color:var(--muted)}
+  .tag{display:inline-block;margin-top:6px;font-size:11px;padding:3px 10px;border-radius:100px}
+  .tag.gr{background:rgba(110,231,183,.1);color:var(--green)}
+  .tag.pu{background:rgba(167,139,250,.1);color:var(--purple)}
+  .tag.ye{background:rgba(251,191,36,.1);color:var(--yellow)}
+  .tag.pk{background:rgba(249,168,212,.1);color:var(--pink)}
 
-  .type-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-  .type-card p  { font-size: 13px; color: var(--text-muted); }
-  .type-card .channel {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 100px;
-    background: rgba(255,255,255,.05);
-    color: var(--text-muted);
-  }
-  .type-card.bika {
-    background: linear-gradient(135deg, var(--surface), rgba(110,231,183,.05));
-    border-width: 4px;
-    position: relative;
-  }
-  .type-card.bika::after {
-    content: 'MAIN TARGET';
-    position: absolute;
-    top: 12px; right: 12px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--bg);
-    background: var(--accent);
-    padding: 3px 10px;
-    border-radius: 100px;
-    font-weight: 700;
-  }
+  /* ── Emotion Journey ── */
+  .journey{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:48px}
+  .jstep{background:var(--surface);padding:28px 24px;position:relative}
+  .jstep::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .jstep.j1::before{background:var(--pink)}.jstep.j2::before{background:var(--purple)}.jstep.j3::before{background:var(--green)}.jstep.j4::before{background:var(--yellow)}.jstep.j5::before{background:var(--blue)}
+  .jstep .jlabel{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+  .jstep.j1 .jlabel{color:var(--pink)}.jstep.j2 .jlabel{color:var(--purple)}.jstep.j3 .jlabel{color:var(--green)}.jstep.j4 .jlabel{color:var(--yellow)}.jstep.j5 .jlabel{color:var(--blue)}
+  .jstep h4{font-size:15px;font-weight:700;margin-bottom:8px}
+  .jstep p{font-size:13px;color:var(--muted);line-height:1.7}
+  .jstep .emo{font-size:11px;margin-top:10px;padding:4px 12px;border-radius:100px;display:inline-block}
+  .jstep.j1 .emo{background:rgba(249,168,212,.1);color:var(--pink)}
+  .jstep.j2 .emo{background:rgba(167,139,250,.1);color:var(--purple)}
+  .jstep.j3 .emo{background:rgba(110,231,183,.1);color:var(--green)}
+  .jstep.j4 .emo{background:rgba(251,191,36,.1);color:var(--yellow)}
+  .jstep.j5 .emo{background:rgba(96,165,250,.1);color:var(--blue)}
 
-  /* ── Traits ── */
-  .traits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-  .trait {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 24px;
-    text-align: center;
-  }
-  .trait .emoji { font-size: 28px; margin-bottom: 12px; }
-  .trait h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .trait p { font-size: 13px; color: var(--text-muted); }
+  /* ── Air: Palette ── */
+  .palette{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+  .swatch{width:64px;height:64px;border-radius:14px;position:relative;border:1px solid rgba(255,255,255,.06)}
+  .swatch span{position:absolute;bottom:-20px;left:0;right:0;font-size:10px;color:var(--dim);text-align:center;white-space:nowrap}
+  .tone-list{list-style:none;padding:0}
+  .tone-list li{padding:12px 0;border-bottom:1px solid var(--border);font-size:13px}
+  .tone-list li:last-child{border-bottom:none}
+  .tone-list .scene{font-size:11px;display:block;margin-bottom:3px;font-weight:600}
+  .tone-list .ex{color:var(--muted);font-style:italic}
 
   /* ── Profile Mock ── */
-  .profile-mock {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    max-width: 480px;
-    margin: 0 auto 48px;
-    overflow: hidden;
-  }
-  .profile-header {
-    padding: 28px 28px 0;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  .profile-avatar {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; font-weight: 800; color: var(--bg);
-  }
-  .profile-info { flex: 1; }
-  .profile-info .name {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .profile-info .handle {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 12px;
-  }
-  .profile-stats {
-    display: flex; gap: 24px;
-  }
-  .profile-stats div { text-align: center; }
-  .profile-stats .num { font-size: 16px; font-weight: 700; display: block; }
-  .profile-stats .label { font-size: 11px; color: var(--text-dim); }
-  .profile-bio {
-    padding: 20px 28px;
-    font-size: 14px;
-    line-height: 1.8;
-    white-space: pre-line;
-    color: var(--text);
-  }
-  .profile-bio .thought {
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .profile-highlights {
-    padding: 0 28px 24px;
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-  }
-  .highlight {
-    flex-shrink: 0;
-    text-align: center;
-  }
-  .highlight-circle {
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    margin-bottom: 6px;
-    background: var(--surface2);
-  }
-  .highlight span {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
+  .pmock{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);max-width:460px;margin:0 auto 48px;overflow:hidden}
+  .phead{padding:24px 24px 0;display:flex;gap:16px;align-items:flex-start}
+  .pav{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--purple));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--bg)}
+  .pinfo .nm{font-size:17px;font-weight:700;margin-bottom:2px}
+  .pinfo .hd{font-size:12px;color:var(--dim);margin-bottom:10px}
+  .pstats{display:flex;gap:20px}
+  .pstats div{text-align:center}
+  .pstats .n{font-size:15px;font-weight:700;display:block}
+  .pstats .l{font-size:10px;color:var(--dim)}
+  .pbio{padding:18px 24px;font-size:13px;line-height:1.9;white-space:pre-line}
+  .pbio .th{color:var(--green);font-weight:600}
+  .phls{padding:0 24px 20px;display:flex;gap:14px;overflow-x:auto}
+  .hl{flex-shrink:0;text-align:center}
+  .hlc{width:56px;height:56px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:5px;background:var(--surface2)}
+  .hl span{font-size:10px;color:var(--muted)}
 
   /* ── Content Mix ── */
-  .content-mix {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-bottom: 48px;
-  }
-  .mix-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .mix-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .mix-card.discovery::before { background: var(--accent); }
-  .mix-card.life::before      { background: var(--accent2); }
-  .mix-card.essence::before   { background: var(--accent3); }
-  .mix-card.give::before      { background: var(--accent4); }
-
-  .mix-card .ratio {
-    font-size: 36px;
-    font-weight: 800;
-    margin-bottom: 4px;
-  }
-  .mix-card.discovery .ratio { color: var(--accent); }
-  .mix-card.life .ratio      { color: var(--accent2); }
-  .mix-card.essence .ratio   { color: var(--accent3); }
-  .mix-card.give .ratio      { color: var(--accent4); }
-
-  .mix-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-  .mix-card .examples {
-    list-style: none; padding: 0;
-  }
-  .mix-card .examples li {
-    font-size: 13px;
-    color: var(--text-muted);
-    padding: 6px 0;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.6;
-  }
-  .mix-card .examples li:last-child { border-bottom: none; }
-
-  /* ── Visual Design ── */
-  .visual-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 48px;
-  }
-  .visual-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-  }
-  .visual-card h4 {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 14px;
-  }
-
-  .color-palette {
-    display: flex; gap: 10px; margin-bottom: 12px;
-  }
-  .color-swatch {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    position: relative;
-  }
-  .color-swatch .name {
-    position: absolute;
-    bottom: -20px; left: 0; right: 0;
-    font-size: 10px;
-    color: var(--text-dim);
-    text-align: center;
-  }
-
-  .tone-examples {
-    list-style: none; padding: 0;
-  }
-  .tone-examples li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .tone-examples li:last-child { border-bottom: none; }
-  .tone-examples .scene {
-    font-size: 11px;
-    color: var(--accent2);
-    display: block;
-    margin-bottom: 4px;
-  }
-  .tone-examples .example {
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  /* ── Funnel ── */
-  .funnel {
-    max-width: 680px;
-    margin: 0 auto 48px;
-  }
-  .funnel-step {
-    display: flex;
-    align-items: stretch;
-    min-height: 80px;
-  }
-  .funnel-line {
-    width: 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-  }
-  .funnel-dot {
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-    margin-top: 4px;
-    border: 3px solid var(--bg);
-    box-shadow: 0 0 0 2px var(--accent);
-  }
-  .funnel-dot.purple { background: var(--accent2); box-shadow: 0 0 0 2px var(--accent2); }
-  .funnel-dot.pink   { background: var(--accent3); box-shadow: 0 0 0 2px var(--accent3); }
-  .funnel-dot.yellow { background: var(--accent4); box-shadow: 0 0 0 2px var(--accent4); }
-  .funnel-connector {
-    width: 2px;
-    flex: 1;
-    background: var(--border);
-  }
-  .funnel-content {
-    padding: 0 0 32px 16px;
-    flex: 1;
-  }
-  .funnel-content h4 {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .funnel-content p {
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-  .funnel-content .tag {
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 100px;
-    background: rgba(110,231,183,.1);
-    color: var(--accent);
-  }
-  .funnel-content .tag.purple { background: rgba(167,139,250,.1); color: var(--accent2); }
-  .funnel-content .tag.yellow { background: rgba(251,191,36,.1); color: var(--accent4); }
-
-  /* ── Schedule ── */
-  .schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-bottom: 48px;
-  }
-  .schedule-table th, .schedule-table td {
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .schedule-table th {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    font-weight: 600;
-  }
-  .schedule-table td { color: var(--text-muted); }
-  .schedule-table .day { font-weight: 700; color: var(--text); width: 48px; }
-  .pill {
-    display: inline-block;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 100px;
-    margin: 2px 4px 2px 0;
-  }
-  .pill.green  { background: rgba(110,231,183,.1); color: var(--accent); }
-  .pill.purple { background: rgba(167,139,250,.1); color: var(--accent2); }
-  .pill.pink   { background: rgba(249,168,212,.1); color: var(--accent3); }
-  .pill.yellow { background: rgba(251,191,36,.1); color: var(--accent4); }
-  .pill.dim    { background: rgba(255,255,255,.04); color: var(--text-dim); }
-
-  /* ── Do / Don't ── */
-  .do-dont {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 20px;
-    margin-bottom: 48px;
-  }
-  .do-card, .dont-card {
-    border-radius: var(--radius);
-    padding: 32px;
-  }
-  .do-card {
-    background: rgba(110,231,183,.04);
-    border: 1px solid rgba(110,231,183,.15);
-  }
-  .dont-card {
-    background: rgba(248,113,113,.04);
-    border: 1px solid rgba(248,113,113,.15);
-  }
-  .do-card h4 { color: var(--accent); font-size: 15px; margin-bottom: 16px; }
-  .dont-card h4 { color: var(--danger); font-size: 15px; margin-bottom: 16px; }
-  .do-card li, .dont-card li {
-    font-size: 14px;
-    color: var(--text-muted);
-    padding: 6px 0;
-    list-style: none;
-    padding-left: 24px;
-    position: relative;
-  }
-  .do-card li::before {
-    content: '\2713';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .dont-card li::before {
-    content: '\2717';
-    position: absolute;
-    left: 0;
-    color: var(--danger);
-    font-weight: 700;
-  }
-
-  /* ── Metrics ── */
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-  .metric {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 24px;
-    text-align: center;
-  }
-  .metric .value {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--accent);
-  }
-  .metric .metric-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-  .metric .reason {
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 8px;
-    line-height: 1.5;
-  }
+  .mix{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:48px}
+  .mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:26px;position:relative;overflow:hidden}
+  .mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .mc.d::before{background:var(--green)}.mc.l::before{background:var(--purple)}.mc.e::before{background:var(--pink)}.mc.v::before{background:var(--yellow)}
+  .mc .rat{font-size:32px;font-weight:800;margin-bottom:4px}
+  .mc.d .rat{color:var(--green)}.mc.l .rat{color:var(--purple)}.mc.e .rat{color:var(--pink)}.mc.v .rat{color:var(--yellow)}
+  .mc h4{font-size:15px;font-weight:700;margin-bottom:10px}
+  .mc .exs{list-style:none;padding:0}
+  .mc .exs li{font-size:12px;color:var(--muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);line-height:1.7}
+  .mc .exs li:last-child{border-bottom:none}
 
   /* ── Format ── */
-  .format-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 48px;
-  }
-  .format-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .format-header {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .format-header .icon { font-size: 20px; }
-  .format-header h4 { font-size: 16px; font-weight: 700; }
-  .format-header .freq {
-    margin-left: auto;
-    font-size: 12px;
-    color: var(--accent);
-    background: rgba(110,231,183,.1);
-    padding: 4px 12px;
-    border-radius: 100px;
-  }
-  .format-body {
-    padding: 20px 24px;
-  }
-  .format-body table {
-    width: 100%;
-    font-size: 13px;
-  }
-  .format-body table td {
-    padding: 8px 0;
-    vertical-align: top;
-    border-bottom: 1px solid rgba(255,255,255,.03);
-  }
-  .format-body table td:first-child {
-    width: 80px;
-    color: var(--text-dim);
-    font-size: 12px;
-  }
-  .format-body table td:last-child {
-    color: var(--text-muted);
-  }
+  .fmt{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-bottom:48px}
+  .fc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+  .fch{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+  .fch .ic{font-size:18px}
+  .fch h4{font-size:15px;font-weight:700}
+  .fch .fr{margin-left:auto;font-size:11px;color:var(--green);background:rgba(110,231,183,.1);padding:3px 12px;border-radius:100px}
+  .fcb{padding:18px 22px}
+  .fcb table{width:100%;font-size:13px}
+  .fcb td{padding:7px 0;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.03)}
+  .fcb td:first-child{width:72px;color:var(--dim);font-size:11px}
+  .fcb td:last-child{color:var(--muted)}
 
-  /* ── Pull Strategy ── */
-  .pull-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-bottom: 48px;
-  }
-  .pull-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-  }
-  .pull-card .step-num {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--accent4);
-    margin-bottom: 8px;
-  }
-  .pull-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
-  .pull-card p { font-size: 13px; color: var(--text-muted); }
-  .pull-card .example-box {
-    margin-top: 14px;
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    padding: 14px;
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.7;
-    border-left: 3px solid var(--accent4);
-  }
+  /* ── Schedule ── */
+  .sched{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:48px}
+  .sched th,.sched td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+  .sched th{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);font-weight:600}
+  .sched td{color:var(--muted)}
+  .sched .day{font-weight:700;color:var(--text);width:44px}
+  .pill{display:inline-block;font-size:10px;padding:3px 10px;border-radius:100px;margin:2px 3px 2px 0}
+  .pill.gr{background:rgba(110,231,183,.1);color:var(--green)}
+  .pill.pu{background:rgba(167,139,250,.1);color:var(--purple)}
+  .pill.pk{background:rgba(249,168,212,.1);color:var(--pink)}
+  .pill.ye{background:rgba(251,191,36,.1);color:var(--yellow)}
+  .pill.dm{background:rgba(255,255,255,.04);color:var(--dim)}
+
+  /* ── Do/Don't ── */
+  .dd{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px;margin-bottom:48px}
+  .do{background:rgba(110,231,183,.03);border:1px solid rgba(110,231,183,.12);border-radius:var(--r);padding:30px}
+  .dont{background:rgba(248,113,113,.03);border:1px solid rgba(248,113,113,.12);border-radius:var(--r);padding:30px}
+  .do h4{color:var(--green);font-size:14px;margin-bottom:14px}
+  .dont h4{color:var(--red);font-size:14px;margin-bottom:14px}
+  .do li,.dont li{font-size:13px;color:var(--muted);padding:5px 0;list-style:none;padding-left:22px;position:relative}
+  .do li::before{content:'\2713';position:absolute;left:0;color:var(--green);font-weight:700}
+  .dont li::before{content:'\2717';position:absolute;left:0;color:var(--red);font-weight:700}
+
+  /* ── Metrics ── */
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:48px}
+  .met{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:22px;text-align:center}
+  .met .val{font-size:26px;font-weight:800;color:var(--green)}
+  .met .ml{font-size:12px;color:var(--muted);margin-top:4px}
+  .met .mr{font-size:11px;color:var(--dim);margin-top:6px;line-height:1.5}
+
+  /* ── Pull ── */
+  .pulls{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:48px}
+  .pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:26px}
+  .pc .sn{font-size:10px;letter-spacing:2px;color:var(--yellow);margin-bottom:8px}
+  .pc h4{font-size:14px;font-weight:700;margin-bottom:8px}
+  .pc p{font-size:13px;color:var(--muted)}
+  .pc .ebox{margin-top:12px;background:var(--surface2);border-radius:var(--rs);padding:12px;font-size:12px;color:var(--text);line-height:1.7;border-left:3px solid var(--yellow)}
 
   /* ── Footer ── */
-  footer {
-    text-align: center;
-    padding: 60px 24px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-  footer .quote {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text);
-    max-width: 500px;
-    margin: 0 auto 16px;
-    line-height: 1.6;
-  }
+  footer{text-align:center;padding:60px 24px;border-top:1px solid var(--border)}
+  footer .q{font-size:18px;font-weight:600;max-width:460px;margin:0 auto 14px;line-height:1.6}
+  footer .cr{font-size:12px;color:var(--dim)}
 
-  /* ── Responsive ── */
-  @media (max-width: 640px) {
-    .hero { padding: 60px 20px 50px; }
-    section { padding: 50px 0; }
-    .meaning-block { padding: 32px 20px; }
-    .frame-steps { grid-template-columns: 1fr; }
-    .profile-mock { margin: 0 0 48px; }
-    .card { padding: 24px; }
+  @media(max-width:640px){
+    .hero{padding:60px 20px 50px}section{padding:50px 0}.meaning{padding:28px 18px}
+    .fsteps,.journey{grid-template-columns:1fr}.pmock{margin:0 0 48px}
+    .step-nav{gap:4px}.step-nav a{padding:6px 12px;font-size:11px}
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ═══════════════════════════════════
+     HERO
+     ═══════════════════════════════════ -->
 <div class="hero">
-  <div class="hero-label">Instagram Account Design</div>
-  <h1>北山 伸<br><span>Instagram 設計書</span></h1>
-  <p>遠藤歩フレームワーク × 美化タイプ特化設計<br>「そう来たか」という発見をもたらす存在を設計する</p>
+  <div class="badge">5-Step Brand Design Framework</div>
+  <h1>北山 伸<br><em>Instagram 5ステップ設計書</em></h1>
+  <p class="sub">遠藤歩フレームワーク 完全適用<br>意味 → 構造 → 感情 → 空気 → メディア</p>
+  <nav class="step-nav">
+    <a href="#s1"><span class="sn c1">1</span>意味の設計</a>
+    <a href="#s2"><span class="sn c2">2</span>構造設計</a>
+    <a href="#s3"><span class="sn c3">3</span>感情設計</a>
+    <a href="#s4"><span class="sn c4">4</span>空気設計</a>
+    <a href="#s5"><span class="sn c5">5</span>メディア設計</a>
+  </nav>
 </div>
 
-<div class="container">
+<div class="wrap">
 
-<!-- ═══════════ 01. 存在の意味 ═══════════ -->
-<section>
-  <div class="section-label">01 / Brand Meaning</div>
-  <div class="section-title">存在の意味</div>
-  <div class="section-desc">ブランドとは「存在の意味」である。意味を意図的に設計し、顧客が自発的に判断・購入する仕組みを作る。</div>
-
-  <div class="meaning-block">
-    <div class="keyword">Existence Meaning</div>
-    <blockquote>冷静に問題の本質を見抜き、<br>「そう来たか」と思わせる奇想天外な方法で<br>解決策を生み出し、みんなに発見をもたらす</blockquote>
-    <div class="sub">一言キーワード: 発見</div>
+<!-- ═══════════════════════════════════
+     STEP 1: 意味の設計
+     ═══════════════════════════════════ -->
+<section id="s1">
+  <div class="sh">
+    <div class="step-badge"><span class="num" style="background:var(--green)">1</span><span style="color:var(--green)">意味の設計 / Meaning Design</span></div>
+    <h2>存在の意味を定義する</h2>
+    <p>ブランドとは「存在の意味」。意味を意図的に設計し、顧客が自発的に判断する仕組みを作る。意味だけでは人は動かない。社会課題と結びつけて「必要性」を生むことが必須。</p>
   </div>
 
-  <div class="frame-steps">
-    <div class="frame-step">
-      <div class="num">01</div>
-      <h4>あるべき姿（ゴール）</h4>
+  <div class="meaning">
+    <div class="kw">Brand Meaning = Discovery</div>
+    <blockquote>冷静に問題の本質を見抜き、<br>「そう来たか」と思わせる奇想天外な方法で<br>解決策を生み出し、みんなに発見をもたらす</blockquote>
+    <div class="note">一言キーワード: 発見 &#8212; 共感だけでは人は買わない。「発見がある人」として脳にアーカイブされることが購買の決め手。</div>
+  </div>
+
+  <!-- 遠藤フレーム 4ステップ -->
+  <div class="fsteps">
+    <div class="fs">
+      <div class="n" style="color:var(--green)">01</div>
+      <h4 style="color:var(--green)">あるべき姿（ゴール）</h4>
       <p>すべてのビジネスパーソンがAIを"自分の手"として使いこなし、自分の頭で考え、自分の力で道を切り拓ける社会</p>
     </div>
-    <div class="frame-step">
-      <div class="num">02</div>
-      <h4>社会課題の本質</h4>
+    <div class="fs">
+      <div class="n" style="color:var(--green)">02</div>
+      <h4 style="color:var(--green)">社会課題の本質</h4>
       <p>AIの波に飲まれて「思考停止」する人が急増。情報は溢れているのに何をすべきかわからない。AIに使われる側になっている</p>
     </div>
-    <div class="frame-step">
-      <div class="num">03</div>
-      <h4>ターゲットの感情</h4>
-      <p>「誰かの役に立ちながら成長したい」「自分らしくAIと向き合いたい」「でも何から始めればいいかわからない」</p>
+    <div class="fs">
+      <div class="n" style="color:var(--green)">03</div>
+      <h4 style="color:var(--green)">ターゲットの感情</h4>
+      <p>誰かの役に立ちながら成長したい。自分らしくAIと向き合いたい。でも何から始めればいいかわからない</p>
     </div>
-    <div class="frame-step">
-      <div class="num">04</div>
-      <h4>自分の特異性</h4>
-      <p>圧倒的冷静さ × 言語化力 × 奇想天外な問題解決 × 抜けてる人間味。これを裏付ける出来事で証明する</p>
+    <div class="fs">
+      <div class="n" style="color:var(--green)">04</div>
+      <h4 style="color:var(--green)">特異性 + 裏付け</h4>
+      <p>圧倒的冷静さ × 言語化力 × 奇想天外な問題解決 × 抜けてる人間味。出来事ベースで証明する</p>
+    </div>
+  </div>
+
+  <!-- 4タイプ分類 -->
+  <h3 style="font-size:18px;margin-bottom:20px">4タイプが同じ「あるべき姿」をどう感じるか</h3>
+  <div class="tg">
+    <div class="tc an">
+      <div class="tl">分析タイプ / Analysis</div>
+      <h4>正しい情報がほしい</h4>
+      <p>「AIを正しく使いこなすための、最先端の正確な情報がほしい。間違った使い方をしたくない。エビデンスに基づいた最適解を知りたい。」</p>
+      <div class="ch">NewsPicks等 &#8212; 北山自身がこのタイプ</div>
+    </div>
+    <div class="tc ac">
+      <div class="tl">行動タイプ / Action</div>
+      <h4>早く結果を出したい</h4>
+      <p>「AIで早く結果を出したい。周りがまだやってないうちに先に勝ちたい。とにかく何をすればいいか教えてくれ。」</p>
+      <div class="ch">X (Twitter)</div>
+    </div>
+    <div class="tc bi">
+      <div class="tl">美化タイプ / Altruistic</div>
+      <h4>誰かの役に立ちながら成長したい</h4>
+      <p>「AIを使って誰かの役に立ちたい。でも自分にできるのかな。自分らしいやり方で向き合いたいけど、何から始めればいいかわからない。AIに振り回されてる自分が嫌。」</p>
+      <div class="ch">Instagram</div>
+    </div>
+    <div class="tc ma">
+      <div class="tl">管理タイプ / Management</div>
+      <h4>失敗したくない</h4>
+      <p>「AIを導入して失敗したくない。確実に成果が出る手順を、リスクなく進められる方法がほしい。今の安定を壊したくない。」</p>
+      <div class="ch">-</div>
+    </div>
+  </div>
+
+  <!-- 特異性 -->
+  <h3 style="font-size:18px;margin-bottom:20px">北山伸の5つの特異性</h3>
+  <div class="g g4" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-bottom:24px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:22px;text-align:center">
+      <div style="font-size:26px;margin-bottom:10px">&#129504;</div>
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:5px">圧倒的冷静さ</h4>
+      <p style="font-size:12px;color:var(--muted)">どんなトラブルでも淡々と分析して解決に向かう</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:22px;text-align:center">
+      <div style="font-size:26px;margin-bottom:10px">&#128172;</div>
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:5px">言語化力</h4>
+      <p style="font-size:12px;color:var(--muted)">難解なAI技術を一言で腹落ちさせる翻訳者</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:22px;text-align:center">
+      <div style="font-size:26px;margin-bottom:10px">&#128161;</div>
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:5px">奇想天外な解決</h4>
+      <p style="font-size:12px;color:var(--muted)">誰も思いつかないアプローチで「そう来たか」を生む</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:22px;text-align:center">
+      <div style="font-size:26px;margin-bottom:10px">&#127775;</div>
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:5px">完璧主義 × 抜けてる</h4>
+      <p style="font-size:12px;color:var(--muted)">AI効率化のプロが道を間違える人間味</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:22px;text-align:center">
+      <div style="font-size:26px;margin-bottom:10px">&#128293;</div>
+      <h4 style="font-size:14px;font-weight:700;margin-bottom:5px">26歳の経営者</h4>
+      <p style="font-size:12px;color:var(--muted)">年齢を言わずとも伝わる若さ × 実力</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 02. ターゲット ═══════════ -->
-<section>
-  <div class="section-label">02 / Target Design</div>
-  <div class="section-title">ターゲット設計</div>
-  <div class="section-desc">ニューロマーケティングに基づく4タイプ分類。Instagramは美化タイプの主戦場として設計する。</div>
+<!-- ═══════════════════════════════════
+     STEP 2: 構造設計
+     ═══════════════════════════════════ -->
+<section id="s2">
+  <div class="sh">
+    <div class="step-badge"><span class="num" style="background:var(--blue)">2</span><span style="color:var(--blue)">構造設計 / Structure Design</span></div>
+    <h2>引き売り導線とルールの設計</h2>
+    <p>Instagramでは一切売らない。ブランドの引力だけで、2つのビジネスに顧客が自発的に辿り着く構造を設計する。コンテンツの比率とフォーマットのルールで再現性を担保する。</p>
+  </div>
 
-  <div class="types-grid">
-    <div class="type-card analysis">
-      <div class="type-label">Analysis Type</div>
-      <h4>分析タイプ</h4>
-      <p>論理的・エビデンス重視・最先端志向。非科学的なものを嫌う。北山自身がこのタイプ。</p>
-      <div class="channel">NewsPicks等</div>
+  <!-- 導線ファネル -->
+  <h3 style="font-size:18px;margin-bottom:24px">導線マップ &#8212; Instagram → 2つのビジネス</h3>
+  <div class="funnel">
+    <div class="fstep">
+      <div class="fline"><div class="fdot gr"></div><div class="fconn"></div></div>
+      <div class="fcont">
+        <h4>Instagram（入口）</h4>
+        <p>発見 + 生き様 + 本質解説で「この人もっと知りたい」と思わせる</p>
+        <span class="tag gr">売り込み一切なし &#8212; ブランド構築のみ</span>
+      </div>
     </div>
-    <div class="type-card action">
-      <div class="type-label">Action Type</div>
-      <h4>行動タイプ</h4>
-      <p>刺激・スピード・短期成果重視。飽きやすく変化を好む。年収提示・派手なライフスタイルに反応。</p>
-      <div class="channel">X (Twitter)</div>
+    <div class="fstep">
+      <div class="fline"><div class="fdot bl"></div><div class="fconn"></div></div>
+      <div class="fcont">
+        <h4>プロフリンク → LINE公式 / リンクまとめ</h4>
+        <p>美化タイプが「もっと知りたい」と自発的にタップ。押し売りではなく自発行動</p>
+      </div>
     </div>
-    <div class="type-card bika">
-      <div class="type-label">Bika Type &#8212; Altruistic</div>
-      <h4>美化タイプ</h4>
-      <p>他者貢献・愛・感受性豊か。「自分らしく」「自分軸」を大切にする。営利的・社会的誇示を嫌う。言語化が苦手で、言語化してくれる存在に惹かれる。</p>
-      <div class="channel">Instagram</div>
+    <div class="fstep">
+      <div class="fline"><div class="fdot pu"></div><div class="fconn"></div></div>
+      <div class="fcont">
+        <h4>導線A: AIサブスク（低単価・大衆向け）</h4>
+        <p>無料コンテンツ体験 → 「もっと深く学びたい」→ 月額サブスク自然加入</p>
+        <span class="tag pu">遠藤式「究極の引き売り」&#8212; 40%無料、残り60%に自然誘導</span>
+      </div>
     </div>
-    <div class="type-card manage">
-      <div class="type-label">Management Type</div>
-      <h4>管理タイプ</h4>
-      <p>安定・仕組み化・再現性重視。無計画・感覚的な運用を嫌う。確実性とリスク低減を求める。</p>
-      <div class="channel">-</div>
+    <div class="fstep">
+      <div class="fline"><div class="fdot ye"></div></div>
+      <div class="fcont">
+        <h4>導線B: 法人AI導入・研修（高単価・少数）</h4>
+        <p>「この人にうちの会社を見てほしい」→ DM / 問い合わせから法人案件化</p>
+        <span class="tag ye">ブランドの引力で受注 &#8212; 営業不要</span>
+      </div>
     </div>
   </div>
 
-  <div class="card" style="max-width:680px;">
-    <h3>なぜ美化タイプ × 北山伸の組み合わせが最強か</h3>
-    <p>北山自身は分析タイプ（冷静・論理的・言語化力）。<br>
-    美化タイプは感受性豊かだが言語化が苦手。<br>
-    → <strong>「分析タイプの言語化力」×「美化タイプが好む与える姿勢」= 発見の連続</strong><br><br>
-    遠藤さんと同じ構造。共感だけでは売れない。発見が購買の決め手になる。</p>
-  </div>
-</section>
-
-<!-- ═══════════ 03. 特異性 ═══════════ -->
-<section>
-  <div class="section-label">03 / Uniqueness</div>
-  <div class="section-title">特異性と裏付け</div>
-  <div class="section-desc">概念ではなく、出来事ベースの証拠で証明する。生き様は模倣不可能 = 最強の差別化源。</div>
-
-  <div class="traits-grid">
-    <div class="trait">
-      <div class="emoji">&#129504;</div>
-      <h4>圧倒的冷静さ</h4>
-      <p>どんなトラブルでも淡々と分析して解決に向かう姿</p>
-    </div>
-    <div class="trait">
-      <div class="emoji">&#128172;</div>
-      <h4>言語化力</h4>
-      <p>難解なAI技術を一言で腹落ちさせる翻訳力</p>
-    </div>
-    <div class="trait">
-      <div class="emoji">&#128161;</div>
-      <h4>奇想天外な問題解決</h4>
-      <p>誰も思いつかないアプローチで「そう来たか」を生む</p>
-    </div>
-    <div class="trait">
-      <div class="emoji">&#127775;</div>
-      <h4>完璧主義 × 抜けてる</h4>
-      <p>AI効率化のプロが道を間違える。この人間味が最強の武器</p>
-    </div>
-    <div class="trait">
-      <div class="emoji">&#128293;</div>
-      <h4>26歳で経営者</h4>
-      <p>年齢を言わずとも行動と判断で伝わる若さ × 実力</p>
-    </div>
-  </div>
-
-  <div class="card-grid cols-2">
-    <div class="card">
-      <h3>裏付けエピソード例</h3>
-      <ul>
-        <li>AI効率化のプロなのに、プライベートでは手間のかかることをあえて大事にしている</li>
-        <li>道をめちゃくちゃ間違える（AIは使えるがGoogleマップは使えない）</li>
-        <li>クライアントの緊急事態にも動じず、淡々と解決策を提示する場面</li>
-        <li>誰もやらないアプローチで課題を解決した具体的な事例</li>
+  <!-- コンテンツ4カテゴリ -->
+  <h3 style="font-size:18px;margin-bottom:24px">コンテンツ4カテゴリと比率ルール</h3>
+  <div class="mix">
+    <div class="mc d">
+      <div class="rat">40%</div>
+      <h4>発見系 &#8212; 「そう来たか」</h4>
+      <ul class="exs">
+        <li>みんなChatGPTに"質問"してる。僕は"議論"させてる。</li>
+        <li>AI時代に最も価値が上がるスキルは、プログラミングじゃない。</li>
+        <li>この業務、普通なら3人で1週間。僕はAIと2時間で終わらせた。</li>
+        <li>"AIに仕事を奪われる"は嘘。本当に奪われるのは○○。</li>
       </ul>
     </div>
-    <div class="card">
-      <h3>エピソードの見せ方の原則</h3>
+    <div class="mc l">
+      <div class="rat">30%</div>
+      <h4>生き様系 &#8212; 模倣不可能</h4>
+      <ul class="exs">
+        <li>クライアントの問題を解決した過程（結果ではなくプロセス）</li>
+        <li>AI効率化のプロが手書きでメモを取っている瞬間</li>
+        <li>道に迷った話、予定を間違えた話</li>
+        <li>「今日クライアントにこう言われた。嬉しかった。」</li>
+      </ul>
+    </div>
+    <div class="mc e">
+      <div class="rat">20%</div>
+      <h4>本質解説系 &#8212; 冷静な言語化</h4>
+      <ul class="exs">
+        <li>AI導入が失敗する会社の共通点。ツールの問題じゃない。</li>
+        <li>"AIは危険"という人が見落としている本質</li>
+        <li>情報過多の時代に、なぜ人は思考停止するのか</li>
+      </ul>
+    </div>
+    <div class="mc v">
+      <div class="rat">10%</div>
+      <h4>与える系 &#8212; 見返りゼロ</h4>
+      <ul class="exs">
+        <li>経営者が今日から使えるAIプロンプト5選（保存推奨）</li>
+        <li>AI初心者がまずやるべき3ステップ</li>
+        <li>僕が毎日使ってるAIワークフロー、全部見せます</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 引き売りテクニック -->
+  <h3 style="font-size:18px;margin-bottom:24px">遠藤式「究極の引き売り」4つの構造</h3>
+  <div class="pulls">
+    <div class="pc">
+      <div class="sn">STRUCTURE 01</div>
+      <h4>発見の入口だけ見せる</h4>
+      <p>リールで3つのうち1つだけ教え、残りはサブスク内で解説。</p>
+      <div class="ebox">「AIで業務を自動化する方法、3つあるんだけど... 1つだけ教える」</div>
+    </div>
+    <div class="pc">
+      <div class="sn">STRUCTURE 02</div>
+      <h4>裏側をチラ見せ</h4>
+      <p>ストーリーズで「収録した」とだけ伝え、中身は見せない。違和感を作る。</p>
+      <div class="ebox">「今日サブスクメンバー向けに収録した内容、これはヤバい。」</div>
+    </div>
+    <div class="pc">
+      <div class="sn">STRUCTURE 03</div>
+      <h4>無料の質で圧倒する</h4>
+      <p>無料コンテンツの質を異常に高くし、「有料はどうなってるんだ」と思わせる。</p>
+      <div class="ebox">「僕が毎日使ってるAIワークフロー、全部見せます（保存推奨）」</div>
+    </div>
+    <div class="pc">
+      <div class="sn">STRUCTURE 04</div>
+      <h4>メンバーの変化を事実共有</h4>
+      <p>勧誘ではなく事実。「○○さんがこんな成果を出した」。</p>
+      <div class="ebox">「サブスクメンバーの方が、AI導入で月30時間の削減に成功した話。」</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     STEP 3: 感情設計
+     ═══════════════════════════════════ -->
+<section id="s3">
+  <div class="sh">
+    <div class="step-badge"><span class="num" style="background:var(--pink)">3</span><span style="color:var(--pink)">感情設計 / Emotion Design</span></div>
+    <h2>タッチポイントごとの感情を設計する</h2>
+    <p>美化タイプがInstagramで北山伸に出会い、ファンになり、サービスに辿り着くまでの「感情の旅」を設計する。各段階で狙う感情を明確にし、逆算してコンテンツを作る。</p>
+  </div>
+
+  <div class="journey">
+    <div class="jstep j1">
+      <div class="jlabel">Phase 1 &#8212; 初接点</div>
+      <h4>「なんか違う人がいる」</h4>
+      <p>リールやカルーセルで初めて出会う。冷たいテック感ではなく温かいのに鋭い。煽りもない。この違和感で指が止まる。</p>
+      <div class="emo">好奇心 &#8212; 「この人、他のAI発信者と何か違う」</div>
+    </div>
+    <div class="jstep j2">
+      <div class="jlabel">Phase 2 &#8212; フォロー直後</div>
+      <h4>「発見の連続だ」</h4>
+      <p>投稿を遡ると、毎回「そう来たか」がある。共感もあるが、それ以上に発見がある。脳が「この人=発見」とアーカイブする。</p>
+      <div class="emo">興奮 &#8212; 「AIってそういう使い方あるんだ」</div>
+    </div>
+    <div class="jstep j3">
+      <div class="jlabel">Phase 3 &#8212; 信頼構築</div>
+      <h4>「この人、本物だ」</h4>
+      <p>生き様系の投稿で人間性が見える。AI効率化のプロが手間を大事にする。失敗もさらけ出す。営利色がない。この人は本気で人の役に立とうとしてる。</p>
+      <div class="emo">信頼 &#8212; 「この人についていきたい」</div>
+    </div>
+    <div class="jstep j4">
+      <div class="jlabel">Phase 4 &#8212; 欲求発生</div>
+      <h4>「もっと深く知りたい」</h4>
+      <p>無料コンテンツの質が高すぎて、有料がどうなってるのか気になる。サブスクメンバーの変化を見て「自分も変わりたい」。自発的にリンクをタップする。</p>
+      <div class="emo">渇望 &#8212; 「この人からもっと学びたい」</div>
+    </div>
+    <div class="jstep j5">
+      <div class="jlabel">Phase 5 &#8212; 推奨</div>
+      <h4>「この人、みんなに知ってほしい」</h4>
+      <p>美化タイプは「人のために」シェアする。良い発見を独り占めせず、大切な人に教えたくなる。口コミが自然発生する。</p>
+      <div class="emo">使命感 &#8212; 「私が見つけた発見を届けたい」</div>
+    </div>
+  </div>
+
+  <!-- 感情設計の原則 -->
+  <div class="g g2">
+    <div class="c">
+      <h3>美化タイプの感情トリガー</h3>
       <ul>
-        <li>「すごい」ではなく「面白い人だな」「素敵だな」と思わせる</li>
-        <li>概念だけの発信はNG → 必ず出来事をセットにする</li>
-        <li>失敗談・抜けてる部分も正直に見せる</li>
-        <li>非言語（写真・動画・行動）で意味を伝える</li>
+        <li><strong>「与えてくれている」</strong>と感じた瞬間 → 信頼が跳ね上がる</li>
+        <li><strong>「この人も完璧じゃない」</strong>と感じた瞬間 → 親近感と安心</li>
+        <li><strong>「言語化してくれた」</strong>と感じた瞬間 → 自分のモヤモヤが晴れる快感</li>
+        <li><strong>「自分もこうなりたい」</strong>と感じた瞬間 → 購買の入口</li>
+        <li><strong>「この人を応援したい」</strong>と感じた瞬間 → シェア・推奨の入口</li>
+      </ul>
+    </div>
+    <div class="c">
+      <h3>感情を壊す地雷（美化タイプ特有）</h3>
+      <ul>
+        <li><strong>営利色を感じた瞬間</strong> → 「結局お金か」で一瞬で離脱</li>
+        <li><strong>言行不一致を感じた瞬間</strong> → 「嘘だったんだ」で信頼崩壊</li>
+        <li><strong>マウントを感じた瞬間</strong> → 「この人、自分のためにやってる」で冷める</li>
+        <li><strong>煽りを感じた瞬間</strong> → 「またこのパターンか」でマーケ疲れ</li>
+        <li><strong>他者批判を見た瞬間</strong> → 美化タイプは争いを最も嫌う</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 04. プロフィール ═══════════ -->
-<section>
-  <div class="section-label">04 / Profile Design</div>
-  <div class="section-title">プロフィール設計</div>
-  <div class="section-desc">年収・年商は一切出さない。営利色を排除し、存在の意味と思想だけで構成する。</div>
+<!-- ═══════════════════════════════════
+     STEP 4: 空気設計
+     ═══════════════════════════════════ -->
+<section id="s4">
+  <div class="sh">
+    <div class="step-badge"><span class="num" style="background:var(--purple)">4</span><span style="color:var(--purple)">空気設計 / Atmosphere Design</span></div>
+    <h2>全タッチポイントの空気を統一する</h2>
+    <p>非言語で意味を伝える。「AIなのに温かい」というギャップそのものが発見になる。カラー、写真、フォント、語り口、BGM &#8212; すべてが同じ空気を纏う。</p>
+  </div>
 
-  <div class="profile-mock">
-    <div class="profile-header">
-      <div class="profile-avatar">伸</div>
-      <div class="profile-info">
-        <div class="name">北山 伸</div>
-        <div class="handle">@shin_kitayama</div>
-        <div class="profile-stats">
-          <div><span class="num">-</span><span class="label">投稿</span></div>
-          <div><span class="num">-</span><span class="label">フォロワー</span></div>
-          <div><span class="num">-</span><span class="label">フォロー中</span></div>
+  <div class="g g2">
+    <!-- カラー -->
+    <div class="c">
+      <h3>カラーパレット</h3>
+      <div class="palette">
+        <div class="swatch" style="background:#f5f0e8"><span>ベージュ</span></div>
+        <div class="swatch" style="background:#faf8f5"><span>オフホワイト</span></div>
+        <div class="swatch" style="background:#a7c4a0"><span>セージ</span></div>
+        <div class="swatch" style="background:#7c8c6e"><span>モスグリーン</span></div>
+        <div class="swatch" style="background:#3d3d3d;border-color:rgba(255,255,255,.1)"><span>チャコール</span></div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:28px">温かみのあるナチュラルトーン。美化タイプが好む柔らかさと、「AI発信なのにテック感がない」違和感を両立。冷たいブルー系・ネオン系は排除。</p>
+    </div>
+    <!-- 写真 -->
+    <div class="c">
+      <h3>写真・動画のトーン</h3>
+      <ul>
+        <li><strong>光:</strong> 自然光、柔らかい陰影。蛍光灯・オフィス感はNG</li>
+        <li><strong>構図:</strong> 作業する手元、ホワイトボード、カフェの思考シーン</li>
+        <li><strong>空気:</strong> 「考えている人」の静かな熱量</li>
+        <li><strong>顔出し:</strong> する。表情は穏やか、目に芯がある</li>
+        <li><strong>NG:</strong> ブランド品・高級感の誇示、オフィスの権威演出</li>
+      </ul>
+    </div>
+    <!-- 語り口 -->
+    <div class="c">
+      <h3>語り口のトーン設計</h3>
+      <ul class="tone-list">
+        <li>
+          <span class="scene" style="color:var(--green)">通常の投稿</span>
+          <span class="ex">「これ、意外とみんな気づいてないんだけど...」</span>
+        </li>
+        <li>
+          <span class="scene" style="color:var(--pink)">核心を突くとき &#8212; タメ口で言い切り</span>
+          <span class="ex">「それ、AIの問題じゃない。考えてないだけ。」</span>
+        </li>
+        <li>
+          <span class="scene" style="color:var(--purple)">失敗談・抜けてる話</span>
+          <span class="ex">「また道間違えた。AI使ってるのにGoogleマップは使えない」</span>
+        </li>
+        <li>
+          <span class="scene" style="color:var(--yellow)">発見を届けるとき &#8212; 静かな熱量</span>
+          <span class="ex">「ここだけの話、これ気づいてる人ほぼいない。」</span>
+        </li>
+      </ul>
+    </div>
+    <!-- 音・テンポ -->
+    <div class="c">
+      <h3>リールBGM・テンポ</h3>
+      <ul>
+        <li><strong>BGM:</strong> 落ち着いたアコースティック / Lo-Fi系。EDM・煽り系は一切使わない</li>
+        <li><strong>テンポ:</strong> 速すぎず、でもダレない。呼吸がある</li>
+        <li><strong>テロップ:</strong> 丸みのあるフォント、余白多め、1画面に情報を詰めない</li>
+        <li><strong>SE:</strong> 過剰な効果音なし。あっても控えめに</li>
+      </ul>
+      <p style="margin-top:14px;font-size:13px;color:var(--muted)">行動タイプ向けの「刺激的で速いリール」とは真逆。美化タイプが心地よく「発見」に浸れる空気を作る。</p>
+    </div>
+  </div>
+
+  <!-- プロフィール -->
+  <h3 style="font-size:18px;margin:48px 0 24px">プロフィール &#8212; 空気の入口</h3>
+  <div class="pmock">
+    <div class="phead">
+      <div class="pav">伸</div>
+      <div class="pinfo">
+        <div class="nm">北山 伸</div>
+        <div class="hd">@shin_kitayama</div>
+        <div class="pstats">
+          <div><span class="n">-</span><span class="l">投稿</span></div>
+          <div><span class="n">-</span><span class="l">フォロワー</span></div>
+          <div><span class="n">-</span><span class="l">フォロー中</span></div>
         </div>
       </div>
     </div>
-    <div class="profile-bio">26歳｜経営支援・マーケティング事業
+    <div class="pbio">26歳｜経営支援・マーケティング事業
 
 問題の本質を見抜いて、
 「そう来たか」を届ける。
 
-<span class="thought">AIは手。考えるのは、人間だ。</span>
+<span class="th">AIは手。考えるのは、人間だ。</span>
 
 &#9660; 発見がある投稿を毎日更新中</div>
-    <div class="profile-highlights">
-      <div class="highlight">
-        <div class="highlight-circle">&#128100;</div>
-        <span>僕について</span>
-      </div>
-      <div class="highlight">
-        <div class="highlight-circle">&#129302;</div>
-        <span>AI活用法</span>
-      </div>
-      <div class="highlight">
-        <div class="highlight-circle">&#128173;</div>
-        <span>考え方</span>
-      </div>
-      <div class="highlight">
-        <div class="highlight-circle">&#127916;</div>
-        <span>裏側</span>
-      </div>
-      <div class="highlight">
-        <div class="highlight-circle">&#128172;</div>
-        <span>お客様の声</span>
-      </div>
+    <div class="phls">
+      <div class="hl"><div class="hlc">&#128100;</div><span>僕について</span></div>
+      <div class="hl"><div class="hlc">&#129302;</div><span>AI活用法</span></div>
+      <div class="hl"><div class="hlc">&#128173;</div><span>考え方</span></div>
+      <div class="hl"><div class="hlc">&#127916;</div><span>裏側</span></div>
+      <div class="hl"><div class="hlc">&#128172;</div><span>お客様の声</span></div>
     </div>
   </div>
 
-  <div class="card-grid cols-2">
-    <div class="card">
+  <div class="g g2">
+    <div class="c">
       <h3>プロフィール設計意図</h3>
       <ul>
         <li>年収・年商・実績数字は一切出さない（美化タイプ向け）</li>
         <li>「CURAIM」は出さない（ブランディングNG準拠）</li>
-        <li>「経営支援・マーケティング事業」で肩書きを示す</li>
-        <li>「そう来たか」= 存在の意味を端的に表現</li>
+        <li>「経営支援・マーケティング事業」で肩書きを端的に</li>
+        <li>「そう来たか」= 存在の意味そのもの</li>
         <li>「AIは手。考えるのは、人間。」= 思想の旗</li>
       </ul>
     </div>
-    <div class="card">
+    <div class="c">
       <h3>ハイライト設計</h3>
       <ul>
-        <li><strong>僕について:</strong> 自己紹介、価値観、なぜこの仕事をしているか</li>
+        <li><strong>僕について:</strong> 自己紹介、価値観、原点のストーリー</li>
         <li><strong>AI活用法:</strong> 実際のAI活用事例、ビフォーアフター</li>
         <li><strong>考え方:</strong> 思想系のストーリーズまとめ</li>
         <li><strong>裏側:</strong> 失敗談、日常、抜けてるエピソード</li>
@@ -980,376 +662,87 @@
   </div>
 </section>
 
-<!-- ═══════════ 05. ビジュアル ═══════════ -->
-<section>
-  <div class="section-label">05 / Visual & Tone</div>
-  <div class="section-title">ビジュアル・世界観・語り口</div>
-  <div class="section-desc">非言語で意味を伝える。「AIなのに温かい」というギャップが発見になる。</div>
+<!-- ═══════════════════════════════════
+     STEP 5: メディア設計
+     ═══════════════════════════════════ -->
+<section id="s5">
+  <div class="sh">
+    <div class="step-badge"><span class="num" style="background:var(--yellow)">5</span><span style="color:var(--yellow)">メディア設計 / Media Design</span></div>
+    <h2>具体的な投稿フォーマットと運用</h2>
+    <p>意味・構造・感情・空気の設計を、実際の投稿に落とし込む。リール・カルーセル・ストーリーズの3本柱で、週間スケジュールに沿って運用する。</p>
+  </div>
 
-  <div class="visual-grid">
-    <div class="visual-card">
-      <h4>カラーパレット</h4>
-      <div class="color-palette">
-        <div class="color-swatch" style="background:#f5f0e8;"><span class="name">ベージュ</span></div>
-        <div class="color-swatch" style="background:#faf8f5;"><span class="name">オフホワイト</span></div>
-        <div class="color-swatch" style="background:#a7c4a0;"><span class="name">セージ</span></div>
-        <div class="color-swatch" style="background:#7c8c6e;"><span class="name">モスグリーン</span></div>
-        <div class="color-swatch" style="background:#3d3d3d;"><span class="name">チャコール</span></div>
-      </div>
-      <p style="font-size:13px; color:var(--text-muted); margin-top:28px;">温かみのあるナチュラルトーン。美化タイプが好む柔らかさ。冷たいテック感は排除。</p>
+  <!-- フォーマット -->
+  <div class="fmt">
+    <div class="fc">
+      <div class="fch"><span class="ic">&#127909;</span><h4>リール</h4><span class="fr">週4-5本</span></div>
+      <div class="fcb"><table>
+        <tr><td>尺</td><td>30-90秒</td></tr>
+        <tr><td>冒頭3秒</td><td>発見フックで止める（「これ、誰も言ってないんだけど」）</td></tr>
+        <tr><td>構成</td><td>フック → 問題提示 → 意外な視点（発見）→ 一言で締め</td></tr>
+        <tr><td>テロップ</td><td>読みやすく要点だけ。情報過多にしない</td></tr>
+        <tr><td>BGM</td><td>落ち着いた曲。EDM系は使わない</td></tr>
+        <tr><td>CTA</td><td>「この考え方、届けたい人いたらシェアしてほしい」</td></tr>
+      </table></div>
     </div>
-    <div class="visual-card">
-      <h4>写真・動画のトーン</h4>
-      <ul class="tone-examples">
-        <li>自然光、柔らかい陰影</li>
-        <li>作業している手元、ホワイトボード、カフェでの思考シーン</li>
-        <li>「考えている人」の空気感</li>
-        <li>営利色ゼロ。ブランド品・高級感の誇示はしない</li>
-        <li>顔出しあり。表情は穏やか、でも目に芯がある</li>
-      </ul>
+    <div class="fc">
+      <div class="fch"><span class="ic">&#128218;</span><h4>カルーセル</h4><span class="fr">週1-2本</span></div>
+      <div class="fcb"><table>
+        <tr><td>枚数</td><td>7-10枚</td></tr>
+        <tr><td>1枚目</td><td>「え？」と思わせるタイトル</td></tr>
+        <tr><td>2枚目</td><td>問題提示（共感）</td></tr>
+        <tr><td>3-8枚</td><td>本質解説 or ステップ</td></tr>
+        <tr><td>最終枚</td><td>まとめ +「保存して見返してね」</td></tr>
+        <tr><td>デザイン</td><td>温かいトーン、余白多め、1枚に詰めすぎない</td></tr>
+      </table></div>
     </div>
-    <div class="visual-card">
-      <h4>語り口のトーン</h4>
-      <ul class="tone-examples">
-        <li>
-          <span class="scene">通常の投稿</span>
-          <span class="example">「これ、意外とみんな気づいてないんだけど...」</span>
-        </li>
-        <li>
-          <span class="scene">核心を突くとき</span>
-          <span class="example">「それ、AIの問題じゃない。考えてないだけ。」</span>
-        </li>
-        <li>
-          <span class="scene">失敗談・抜けてる話</span>
-          <span class="example">「また道間違えた。AI使ってるのにGoogleマップは使えない」</span>
-        </li>
-        <li>
-          <span class="scene">発見を届けるとき</span>
-          <span class="example">「ここだけの話、これ気づいてる人ほぼいない。」</span>
-        </li>
-      </ul>
-    </div>
-    <div class="visual-card">
-      <h4>リールのBGM・テンポ</h4>
-      <ul class="tone-examples">
-        <li>落ち着いたBGM。EDM・煽り系は使わない</li>
-        <li>テンポは速すぎず、でもダレない</li>
-        <li>行動タイプ的な煽り動画とは一線を画す</li>
-        <li>テロップは読みやすく要点だけ。情報過多にしない</li>
-      </ul>
+    <div class="fc">
+      <div class="fch"><span class="ic">&#9898;</span><h4>ストーリーズ</h4><span class="fr">毎日2-5枚</span></div>
+      <div class="fcb"><table>
+        <tr><td>内容</td><td>作業風景、思考メモ、失敗談、学びの共有</td></tr>
+        <tr><td>トーン</td><td>カジュアル。作り込みすぎない。リアル感</td></tr>
+        <tr><td>交流</td><td>質問スタンプ、アンケート（「AI何に使ってる？」）</td></tr>
+        <tr><td>HL</td><td>僕について / AI活用法 / 考え方 / 裏側 / お客様の声</td></tr>
+      </table></div>
     </div>
   </div>
-</section>
 
-<!-- ═══════════ 06. コンテンツ ═══════════ -->
-<section>
-  <div class="section-label">06 / Content Strategy</div>
-  <div class="section-title">コンテンツ設計</div>
-  <div class="section-desc">共感ではなく「発見」で脳にアーカイブされる。4カテゴリの比率を守って設計する。</div>
-
-  <div class="content-mix">
-    <div class="mix-card discovery">
-      <div class="ratio">40%</div>
-      <h4>発見系 &#8212; 「そう来たか」の連続</h4>
-      <ul class="examples">
-        <li>みんなChatGPTに"質問"してる。僕は"議論"させてる。</li>
-        <li>AI時代に最も価値が上がるスキルは、プログラミングじゃない。</li>
-        <li>この業務、普通なら3人で1週間。僕はAIと2時間で終わらせた。</li>
-        <li>経営者の9割が見落としてるAIの使い方。ツールの話じゃない。</li>
-        <li>"AIに仕事を奪われる"は嘘。本当に奪われるのは○○。</li>
-      </ul>
-    </div>
-    <div class="mix-card life">
-      <div class="ratio">30%</div>
-      <h4>生き様系 &#8212; 模倣不可能な差別化</h4>
-      <ul class="examples">
-        <li>クライアントの問題を解決した過程（結果ではなくプロセス）</li>
-        <li>AI効率化のプロが手書きでメモを取っている瞬間</li>
-        <li>道に迷った話、予定を間違えた話</li>
-        <li>朝のルーティン、考え事をしている瞬間</li>
-        <li>「今日クライアントにこう言われた。嬉しかった。」</li>
-      </ul>
-    </div>
-    <div class="mix-card essence">
-      <div class="ratio">20%</div>
-      <h4>本質解説系 &#8212; 冷静な言語化力</h4>
-      <ul class="examples">
-        <li>AI導入が失敗する会社の共通点。ツールの問題じゃない。</li>
-        <li>"AIは危険"という人が見落としている本質</li>
-        <li>情報過多の時代に、なぜ人は思考停止するのか</li>
-        <li>経営者がAIより先に向き合うべきたった1つのこと</li>
-      </ul>
-    </div>
-    <div class="mix-card give">
-      <div class="ratio">10%</div>
-      <h4>与える系 &#8212; 見返りを求めない</h4>
-      <ul class="examples">
-        <li>経営者が今日から使えるAIプロンプト5選（保存推奨）</li>
-        <li>AI初心者がまずやるべき3ステップ</li>
-        <li>僕が毎日使ってるAIワークフロー、全部見せます</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 07. フォーマット ═══════════ -->
-<section>
-  <div class="section-label">07 / Post Formats</div>
-  <div class="section-title">投稿フォーマット</div>
-  <div class="section-desc">リール・カルーセル・ストーリーズの3本柱で設計する。</div>
-
-  <div class="format-grid">
-    <div class="format-card">
-      <div class="format-header">
-        <span class="icon">&#127909;</span>
-        <h4>リール</h4>
-        <span class="freq">週4-5本</span>
-      </div>
-      <div class="format-body">
-        <table>
-          <tr><td>尺</td><td>30-90秒</td></tr>
-          <tr><td>冒頭3秒</td><td>発見フックで止める（「これ、誰も言ってないんだけど」）</td></tr>
-          <tr><td>構成</td><td>フック → 問題提示 → 意外な視点（発見） → 一言で締め</td></tr>
-          <tr><td>テロップ</td><td>読みやすく要点だけ。情報過多にしない</td></tr>
-          <tr><td>BGM</td><td>落ち着いた曲。EDM系は使わない</td></tr>
-          <tr><td>CTA</td><td>「この考え方、届けたい人いたらシェアしてほしい」</td></tr>
-        </table>
-      </div>
-    </div>
-    <div class="format-card">
-      <div class="format-header">
-        <span class="icon">&#128218;</span>
-        <h4>カルーセル</h4>
-        <span class="freq">週1-2本</span>
-      </div>
-      <div class="format-body">
-        <table>
-          <tr><td>枚数</td><td>7-10枚</td></tr>
-          <tr><td>1枚目</td><td>「え？」と思わせるタイトル</td></tr>
-          <tr><td>2枚目</td><td>問題提示（共感）</td></tr>
-          <tr><td>3-8枚目</td><td>本質解説 or ステップ</td></tr>
-          <tr><td>最終枚</td><td>まとめ +「保存して見返してね」</td></tr>
-          <tr><td>デザイン</td><td>温かいトーン、余白多め、1枚に詰めすぎない</td></tr>
-        </table>
-      </div>
-    </div>
-    <div class="format-card">
-      <div class="format-header">
-        <span class="icon">&#9898;</span>
-        <h4>ストーリーズ</h4>
-        <span class="freq">毎日2-5枚</span>
-      </div>
-      <div class="format-body">
-        <table>
-          <tr><td>内容</td><td>作業風景、思考メモ、失敗談、学びの共有</td></tr>
-          <tr><td>トーン</td><td>カジュアル。作り込みすぎない。リアル感重視</td></tr>
-          <tr><td>交流</td><td>質問スタンプ、アンケート（「AI何に使ってる？」）</td></tr>
-          <tr><td>ハイライト</td><td>僕について / AI活用法 / 考え方 / 裏側 / お客様の声</td></tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 08. スケジュール ═══════════ -->
-<section>
-  <div class="section-label">08 / Weekly Schedule</div>
-  <div class="section-title">週間運用スケジュール</div>
-  <div class="section-desc">リール4本 / カルーセル2本 / ストーリーズ毎日の運用ペースで設計。</div>
-
-  <table class="schedule-table">
-    <thead>
-      <tr>
-        <th>曜日</th>
-        <th>リール</th>
-        <th>カルーセル</th>
-        <th>ストーリーズ</th>
-        <th>カテゴリ</th>
-      </tr>
-    </thead>
+  <!-- スケジュール -->
+  <h3 style="font-size:18px;margin-bottom:20px">週間運用スケジュール</h3>
+  <table class="sched">
+    <thead><tr><th>曜日</th><th>リール</th><th>カルーセル</th><th>ストーリーズ</th><th>カテゴリ</th></tr></thead>
     <tbody>
-      <tr>
-        <td class="day">月</td>
-        <td><span class="pill green">1本</span></td>
-        <td>-</td>
-        <td><span class="pill dim">3枚</span></td>
-        <td><span class="pill green">発見系</span></td>
-      </tr>
-      <tr>
-        <td class="day">火</td>
-        <td><span class="pill purple">1本</span></td>
-        <td>-</td>
-        <td><span class="pill dim">2枚</span></td>
-        <td><span class="pill purple">生き様系</span></td>
-      </tr>
-      <tr>
-        <td class="day">水</td>
-        <td>-</td>
-        <td><span class="pill pink">1本</span></td>
-        <td><span class="pill dim">3枚</span></td>
-        <td><span class="pill pink">本質解説系</span></td>
-      </tr>
-      <tr>
-        <td class="day">木</td>
-        <td><span class="pill green">1本</span></td>
-        <td>-</td>
-        <td><span class="pill dim">2枚</span></td>
-        <td><span class="pill green">発見系</span></td>
-      </tr>
-      <tr>
-        <td class="day">金</td>
-        <td><span class="pill purple">1本</span></td>
-        <td>-</td>
-        <td><span class="pill dim">3枚</span></td>
-        <td><span class="pill purple">生き様系</span></td>
-      </tr>
-      <tr>
-        <td class="day">土</td>
-        <td>-</td>
-        <td><span class="pill yellow">1本</span></td>
-        <td><span class="pill dim">5枚</span></td>
-        <td><span class="pill yellow">与える系</span></td>
-      </tr>
-      <tr>
-        <td class="day">日</td>
-        <td>-</td>
-        <td>-</td>
-        <td><span class="pill dim">2枚</span></td>
-        <td><span class="pill dim">自由（日常）</span></td>
-      </tr>
+      <tr><td class="day">月</td><td><span class="pill gr">1本</span></td><td>-</td><td><span class="pill dm">3枚</span></td><td><span class="pill gr">発見系</span></td></tr>
+      <tr><td class="day">火</td><td><span class="pill pu">1本</span></td><td>-</td><td><span class="pill dm">2枚</span></td><td><span class="pill pu">生き様系</span></td></tr>
+      <tr><td class="day">水</td><td>-</td><td><span class="pill pk">1本</span></td><td><span class="pill dm">3枚</span></td><td><span class="pill pk">本質解説系</span></td></tr>
+      <tr><td class="day">木</td><td><span class="pill gr">1本</span></td><td>-</td><td><span class="pill dm">2枚</span></td><td><span class="pill gr">発見系</span></td></tr>
+      <tr><td class="day">金</td><td><span class="pill pu">1本</span></td><td>-</td><td><span class="pill dm">3枚</span></td><td><span class="pill pu">生き様系</span></td></tr>
+      <tr><td class="day">土</td><td>-</td><td><span class="pill ye">1本</span></td><td><span class="pill dm">5枚</span></td><td><span class="pill ye">与える系</span></td></tr>
+      <tr><td class="day">日</td><td>-</td><td>-</td><td><span class="pill dm">2枚</span></td><td><span class="pill dm">自由</span></td></tr>
     </tbody>
   </table>
-</section>
 
-<!-- ═══════════ 09. 導線 ═══════════ -->
-<section>
-  <div class="section-label">09 / Funnel Design</div>
-  <div class="section-title">2つのビジネスへの導線</div>
-  <div class="section-desc">大原則: Instagramでは売らない。ブランド構築だけに徹し、顧客の自発的な判断を待つ。</div>
-
-  <div class="funnel">
-    <div class="funnel-step">
-      <div class="funnel-line">
-        <div class="funnel-dot"></div>
-        <div class="funnel-connector"></div>
-      </div>
-      <div class="funnel-content">
-        <h4>Instagram（入口）</h4>
-        <p>発見 + 生き様 + 本質解説で「この人もっと知りたい」と思わせる</p>
-        <span class="tag">売り込み一切なし</span>
-      </div>
-    </div>
-    <div class="funnel-step">
-      <div class="funnel-line">
-        <div class="funnel-dot"></div>
-        <div class="funnel-connector"></div>
-      </div>
-      <div class="funnel-content">
-        <h4>プロフリンク → LINE公式 / リンクまとめ</h4>
-        <p>美化タイプが「もっと知りたい」と自発的にタップ</p>
-      </div>
-    </div>
-    <div class="funnel-step">
-      <div class="funnel-line">
-        <div class="funnel-dot purple"></div>
-        <div class="funnel-connector"></div>
-      </div>
-      <div class="funnel-content">
-        <h4>導線A: AIサブスク（低単価・大衆向け）</h4>
-        <p>無料コンテンツ体験 → 「もっと深く学びたい」→ 月額サブスク</p>
-        <span class="tag purple">究極の引き売り</span>
-      </div>
-    </div>
-    <div class="funnel-step">
-      <div class="funnel-line">
-        <div class="funnel-dot yellow"></div>
-      </div>
-      <div class="funnel-content">
-        <h4>導線B: 法人AI導入・研修（高単価・少数）</h4>
-        <p>「この人にうちの会社を見てほしい」→ DM / 問い合わせ → 法人案件化</p>
-        <span class="tag yellow">ブランドの引力で受注</span>
-      </div>
-    </div>
+  <!-- 追う指標 -->
+  <h3 style="font-size:18px;margin-bottom:20px">追う指標（ブランド直結のみ）</h3>
+  <div class="metrics">
+    <div class="met"><div class="val">3%+</div><div class="ml">保存率</div><div class="mr">「発見があった」の最強シグナル</div></div>
+    <div class="met"><div class="val">DM</div><div class="ml">シェア・DM数</div><div class="mr">美化タイプは「人のために」シェアする</div></div>
+    <div class="met"><div class="val">3+/週</div><div class="ml">自然DM数</div><div class="mr">信頼の証。法人案件の入口</div></div>
+    <div class="met"><div class="val">5%+</div><div class="ml">リンクCTR</div><div class="mr">プロフ→リンクの導線健全性</div></div>
   </div>
-
-  <div style="margin-top:20px;">
-    <div class="section-label" style="margin-bottom:20px;">遠藤式「究極の引き売り」テクニック</div>
-    <div class="pull-grid">
-      <div class="pull-card">
-        <div class="step-num">TECHNIQUE 01</div>
-        <h4>発見の入口だけ見せる</h4>
-        <p>リールで3つのうち1つだけ教える。残りはサブスク内で。</p>
-        <div class="example-box">「AIで業務を自動化する方法、3つあるんだけど... 1つだけ教える」</div>
-      </div>
-      <div class="pull-card">
-        <div class="step-num">TECHNIQUE 02</div>
-        <h4>裏側をチラ見せ</h4>
-        <p>ストーリーズで「とんでもない内容を収録した」とだけ伝える。中身は見せない。</p>
-        <div class="example-box">「今日サブスクメンバー向けに収録した内容、これはヤバい。」</div>
-      </div>
-      <div class="pull-card">
-        <div class="step-num">TECHNIQUE 03</div>
-        <h4>無料の質で圧倒する</h4>
-        <p>無料コンテンツのクオリティを異常に高くし、「有料はどうなってるんだ」と思わせる。</p>
-        <div class="example-box">「僕が毎日使ってるAIワークフロー、全部見せます（保存推奨）」</div>
-      </div>
-      <div class="pull-card">
-        <div class="step-num">TECHNIQUE 04</div>
-        <h4>メンバーの変化を事実として共有</h4>
-        <p>勧誘ではなく、事実の共有。「○○さんがこんな成果を出した」。</p>
-        <div class="example-box">「サブスクメンバーの方が、AI導入で月30時間の削減に成功した話。」</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 10. 指標 ═══════════ -->
-<section>
-  <div class="section-label">10 / Metrics</div>
-  <div class="section-title">追う指標 / 追わない指標</div>
-  <div class="section-desc">フォロワー数を追うと営利色が出る。ブランド構築に直結する指標だけを見る。</div>
-
-  <div class="metrics-grid">
-    <div class="metric">
-      <div class="value">3%+</div>
-      <div class="metric-label">保存率</div>
-      <div class="reason">「発見があった」の最強シグナル</div>
-    </div>
-    <div class="metric">
-      <div class="value">DM</div>
-      <div class="metric-label">シェア・DM数</div>
-      <div class="reason">美化タイプは「人のために」シェアする</div>
-    </div>
-    <div class="metric">
-      <div class="value">3+/週</div>
-      <div class="metric-label">自然DM数</div>
-      <div class="reason">信頼の証。法人案件の入口になる</div>
-    </div>
-    <div class="metric">
-      <div class="value">5%+</div>
-      <div class="metric-label">リンククリック率</div>
-      <div class="reason">プロフアクセスからの導線健全性</div>
-    </div>
-  </div>
-
-  <div class="card" style="max-width:680px;">
-    <h3>追わない指標（罠になるもの）</h3>
+  <div class="c" style="max-width:660px;margin-bottom:48px">
+    <h3>追わない指標（罠になる）</h3>
     <ul>
       <li><strong>フォロワー数</strong> &#8212; 数を追うと営利色が出る。美化タイプは離れる</li>
       <li><strong>いいね数</strong> &#8212; バニティメトリクス。保存とシェアの方が重要</li>
       <li><strong>リーチ数</strong> &#8212; 初期は少なくて当然。ブランドの深さを優先</li>
     </ul>
   </div>
-</section>
 
-<!-- ═══════════ 11. DO / DON'T ═══════════ -->
-<section>
-  <div class="section-label">11 / Rules</div>
-  <div class="section-title">鉄則: やること / やらないこと</div>
-  <div class="section-desc">美化タイプは言行不一致を最も敏感に察知する。一度の矛盾で信頼は崩壊する。</div>
-
-  <div class="do-dont">
-    <div class="do-card">
+  <!-- DO/DON'T -->
+  <h3 style="font-size:18px;margin-bottom:20px">鉄則: やること / やらないこと</h3>
+  <div class="dd">
+    <div class="do">
       <h4>&#10003; 絶対にやること</h4>
       <ul>
         <li>人に与える姿勢を<strong>行動</strong>で見せる</li>
@@ -1359,10 +752,10 @@
         <li>学び続ける姿勢を見せる</li>
         <li>共感より「発見」を常に意識する</li>
         <li>非言語（写真・動画・行動）で意味を伝える</li>
-        <li>美化タイプ向けCTA（「届けたい人がいたらシェアして」）</li>
+        <li>CTA は「届けたい人がいたらシェアして」</li>
       </ul>
     </div>
-    <div class="dont-card">
+    <div class="dont">
       <h4>&#10007; 絶対にやらないこと</h4>
       <ul>
         <li>年収・年商・売上の開示</li>
@@ -1378,11 +771,11 @@
   </div>
 </section>
 
-</div><!-- /container -->
+</div>
 
 <footer>
-  <div class="quote">「AIは手。考えるのは、人間だ。」</div>
-  <p>Based on 遠藤歩 ブランディング・フレームワーク<br>Designed for 北山伸 Instagram &#8212; 2026.04</p>
+  <div class="q">「AIは手。考えるのは、人間だ。」</div>
+  <p class="cr">Based on 遠藤歩 5-Step Brand Design Framework<br>Designed for 北山伸 Instagram &#8212; 2026.04</p>
 </footer>
 
 </body>
